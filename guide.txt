@@ -1,0 +1,8 @@
+- Cài thư viện bằng lệnh `pip install -r requirements.txt` (file requirements.txt có sẵn)
+- file model.py gồm:
+	- class PretrainModel: là class dùng để tạo ra vector đặc trưng x cho mỗi ảnh input
+	- hàm read_training_data_label(): đọc file chứa nhãn của các hình ảnh, trả ra 1 dictionary với key là tên file, value là nhãn (1: có xe, 0: ko có xe) (nhãn y dùng để train)
+	- hàm read_training_data(): đọc các file ảnh trong thư mục data/images, trả ra 1 dictionary với key là tên file, value là vector đặc trưng của file ảnh đó (vector x dùng để train)
+- Các việc cần làm thêm:
+	- train model: gọi các hàm `read_training_data_label` và `read_training_data` để lấy ra data (X, y) dùng để train Logistic model, ghi model ra file pickle
+	- use model: đọc frame hình từ camera/video bằng thư viện opencv, lấy ra khung hình cần predict trong frame hình, đưa vào model đã train ở bước trên để predict và phát cảnh báo
